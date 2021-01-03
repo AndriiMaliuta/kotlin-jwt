@@ -1,6 +1,5 @@
 package com.anma.sb.kotlinjwt.config
 
-import com.anma.sb.kotlinjwt.model.User
 import com.anma.sb.kotlinjwt.repo.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -13,9 +12,11 @@ class MyUserDetailsService(val userRepository: UserRepository) : UserDetailsServ
 
     override fun loadUserByUsername(name: String?): UserDetails {
 
-        val anma = name?.let { userRepository.findUserByLogin(it) }
+        val anma = userRepository.findUserByUsername(name)
 
-        return SpringUser(anma?.name, anma?.password, Collections.emptyList())
+
+
+        return SpringUser(anma.username, anma.password, Collections.emptyList())
 
     }
 }

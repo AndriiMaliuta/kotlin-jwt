@@ -1,3 +1,3 @@
 package com.anma.sb.kotlinjwt.model.ui.response
 
-data class UserRest (var login: String, var username: String)
+data class UserRest (var username: String, var email: String)

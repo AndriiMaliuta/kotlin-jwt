@@ -36,7 +36,7 @@ class JwtUtils(val environment: Environment) {
     }
 
     fun generateToken(userDetails: UserDetails): String {
-        return creatToken(mapOf(), userDetails.username)
+        return creatToken(hashMapOf(), userDetails.username)
     }
 
     private fun creatToken(claims: Map<String, Unit>, subject: String): String {
@@ -44,7 +44,7 @@ class JwtUtils(val environment: Environment) {
             .setClaims(claims)
             .setSubject(subject)
             .setIssuedAt(Date(System.currentTimeMillis()))
-            .setExpiration(Date(System.currentTimeMillis() + 3600000))
+            .setExpiration(Date(System.currentTimeMillis() + 600000))
             .signWith(SignatureAlgorithm.HS256, environment.getProperty("jwt.secret")).compact()
     }
 

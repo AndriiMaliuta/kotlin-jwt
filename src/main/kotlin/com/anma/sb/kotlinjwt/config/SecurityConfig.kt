@@ -25,8 +25,8 @@ class SecurityConfig(val userDetailsService: MyUserDetailsService, val jwtReques
         http {
             cors {  }
             csrf { disable() }
-            formLogin {  }
-            httpBasic {}
+//            formLogin {  }
+//            httpBasic {}
             authorizeRequests {
                 authorize("/resources/**", permitAll)
                 authorize("/signup", permitAll)

@@ -7,8 +7,10 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class User (var login: String,
+data class User (var username: String,
                  var password: String,
                  var name: String,
                  var email: String,
+                 var roles: String,
+                 var bio: String,
                  @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Int)
