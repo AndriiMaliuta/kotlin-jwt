@@ -27,9 +27,15 @@ class Bootstrap(val blogRepository: BlogRepository, val userRepository: UserRepo
     }
 
     private fun loadUsers() {
+
         logger.info(">>>>>> Saving user:")
         val anma = User("anma","anma","Andrii","some@mail.com","ROLE_USER,ROLE_ADMIN,READ,WRITE,ADMIN","",1)
         userRepository.save(anma)
         logger.info(">>>>>> Saved user with ID == ${anma.id}")
+
+        logger.info(">>>>>> Saving user:")
+        val vasyl = User("vasyl", "vasyl", "Vasyl Vasylenko", "vasyl@mail.com","READ, ROLE_USER","",2)
+        userRepository.save(vasyl)
+        logger.info(">>>>>> Saved user with ID == ${vasyl.id}")
     }
 }

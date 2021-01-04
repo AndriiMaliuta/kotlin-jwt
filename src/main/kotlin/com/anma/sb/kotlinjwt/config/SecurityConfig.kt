@@ -31,7 +31,7 @@ class SecurityConfig(val userDetailsService: MyUserDetailsService, val jwtReques
                 authorize("/resources/**", permitAll)
                 authorize("/signup", permitAll)
                 authorize("/login", permitAll)
-                authorize("/rest/**", hasAuthority("READ"))
+                authorize("/rest/**", hasRole("ROLE_ADMIN"))
                 authorize( anyRequest, authenticated)
             }
             exceptionHandling {  }

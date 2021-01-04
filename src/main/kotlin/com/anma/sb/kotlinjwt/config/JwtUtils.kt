@@ -44,7 +44,7 @@ class JwtUtils(val environment: Environment) {
             .setClaims(claims)
             .setSubject(subject)
             .setIssuedAt(Date(System.currentTimeMillis()))
-            .setExpiration(Date(System.currentTimeMillis() + 600000))
+            .setExpiration(Date(System.currentTimeMillis() + (environment.getProperty("jwt.expiration")?.toInt() ?: 600000)))
             .signWith(SignatureAlgorithm.HS256, environment.getProperty("jwt.secret")).compact()
     }
 
