@@ -16,4 +16,4 @@ server:
   port: 8080
 jwt:
   secret: adJasdjhKKPDFLsdcklkkHdjYriLdjYHTdnjakMnhueyGjFFgasdfDDfsdgfKuIdsd
-  expiration: 600000  # 10 minutes
+  expiration: 1800000  # 30 minutes

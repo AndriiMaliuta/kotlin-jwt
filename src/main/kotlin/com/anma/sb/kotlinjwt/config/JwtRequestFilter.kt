@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Component
-
 class JwtRequestFilter(val userDetailsService: MyUserDetailsService, val jwtUtils: JwtUtils) : OncePerRequestFilter() {
 
     val logger = LoggerFactory.getLogger(JwtRequestFilter::class.java)

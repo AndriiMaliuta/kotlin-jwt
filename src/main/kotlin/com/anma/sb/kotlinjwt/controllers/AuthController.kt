@@ -10,6 +10,7 @@ import com.anma.sb.kotlinjwt.model.ui.response.AuthResponse
 import com.anma.sb.kotlinjwt.model.ui.response.UserRest
 import com.anma.sb.kotlinjwt.repo.UserRepository
 import org.modelmapper.ModelMapper
+import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -27,11 +28,16 @@ class SignupController(
     val userRepository: UserRepository
 ) {
 
+    val logger = LoggerFactory.getLogger(SignupController::class.java)
+
     @PostMapping("/signup")
     fun signupUser(@RequestBody createUserRequest: CreateUserRequest): UserRest {
         val mapper = ModelMapper()
         val user = userRepository.save(mapper.map(createUserRequest, User::class.java))
-        return mapper.map(user, UserRest::class.java)
+        logger.info(">>>>>>>>>> Created user ${user}")
+        val userRest = UserRest(user.username, user.email)
+//        return mapper.map(user, UserRest::class.java)
+        return userRest
     }
 
     @PostMapping("/login")

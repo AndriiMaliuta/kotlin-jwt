@@ -20,7 +20,7 @@ class Bootstrap(val blogRepository: BlogRepository, val userRepository: UserRepo
     }
 
     private fun loadBlogs() {
-        logger.info("***** Loading data: ")
+        logger.info("######## Loading data: ")
         val blog1 = Blog(1, "Blog 1", "Lorem asd asd  das dasdas")
         blogRepository.save(blog1)
         logger.info(">>>>>> Blog created with ID == ${blog1.id}")
@@ -31,11 +31,11 @@ class Bootstrap(val blogRepository: BlogRepository, val userRepository: UserRepo
         logger.info(">>>>>> Saving user:")
         val anma = User("anma","anma","Andrii","some@mail.com","ROLE_USER,ROLE_ADMIN,READ,WRITE,ADMIN","",1)
         userRepository.save(anma)
-        logger.info(">>>>>> Saved user with ID == ${anma.id}")
+        logger.info(">>>>>> Saved user ${anma}")
 
         logger.info(">>>>>> Saving user:")
         val vasyl = User("vasyl", "vasyl", "Vasyl Vasylenko", "vasyl@mail.com","READ, ROLE_USER","",2)
         userRepository.save(vasyl)
-        logger.info(">>>>>> Saved user with ID == ${vasyl.id}")
+        logger.info(">>>>>> Saved user ${vasyl}")
     }
 }
