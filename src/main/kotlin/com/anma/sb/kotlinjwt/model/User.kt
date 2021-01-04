@@ -1,6 +1,5 @@
 package com.anma.sb.kotlinjwt.model
 
-import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType

@@ -1,5 +1,6 @@
 package com.anma.sb.kotlinjwt.config
 
+import org.slf4j.LoggerFactory
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Component
+
 class JwtRequestFilter(val userDetailsService: MyUserDetailsService, val jwtUtils: JwtUtils) : OncePerRequestFilter() {
+
+    val logger = LoggerFactory.getLogger(JwtRequestFilter::class.java)
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
 
@@ -30,6 +34,7 @@ class JwtRequestFilter(val userDetailsService: MyUserDetailsService, val jwtUtil
 
             if (jwtUtils.validateToken(jwt!!, userDetails)) {
 
+                logger.info(">>>>>>>>>>>> authorities: ${userDetails.authorities}")
                 val token = UsernamePasswordAuthenticationToken(userDetails, null, userDetails.authorities)
                 token.details = WebAuthenticationDetailsSource().buildDetails(request)
 
