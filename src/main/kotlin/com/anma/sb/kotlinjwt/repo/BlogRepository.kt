@@ -4,5 +4,5 @@ import com.anma.sb.kotlinjwt.model.Blog
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
-interface BlogRepository : JpaRepository<Blog, UUID> {
+interface BlogRepository : JpaRepository<Blog, Int> {
 }

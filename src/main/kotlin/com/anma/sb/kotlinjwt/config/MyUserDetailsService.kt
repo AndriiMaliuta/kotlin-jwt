@@ -18,7 +18,7 @@ class MyUserDetailsService(val userRepository: UserRepository) : UserDetailsServ
         val anma = userRepository.findUserByUsername(name)
 
         val rolesAndAuthoritis = AuthorityUtils.commaSeparatedStringToAuthorityList(anma.roles)
-//            arrayListOf<SimpleGrantedAuthority>()
+
 //        for (role in anma.roles.split(",")) {
 //            rolesAndAuthoritis.add(SimpleGrantedAuthority(role))
 //        }
