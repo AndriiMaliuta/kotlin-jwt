@@ -15,26 +15,35 @@ class Bootstrap(val blogRepository: BlogRepository, val userRepository: UserRepo
     val logger = LoggerFactory.getLogger(Bootstrap::class.java)
 
     override fun run(vararg args: String?) {
-        loadBlogs()
         loadUsers()
+//        loadBlogs()
     }
 
-    private fun loadBlogs() {
+/*      private fun loadBlogs() {
         logger.info("######## Loading data: ")
-        val blog1 = Blog(1, "Blog 1", "Lorem asd asd  das dasdas")
+        val blog1 = Blog(1,"Blog 1","Lorem ipsum dolor das ... ", userRepository.findUserByUsername("anma"))
         blogRepository.save(blog1)
         logger.info(">>>>>> Blog created with ID == ${blog1.id}")
     }
+*/
 
     private fun loadUsers() {
 
+/*      logger.info("######## Loading data: ")
+        val blog1 = Blog(1,"Blog 1","Lorem ipsum dolor das ... ", userRepository.findUserByUsername("anma"))
+        blogRepository.save(blog1)
+        logger.info(">>>>>> Blog created with ID == ${blog1.id}")
+*/
+
         logger.info(">>>>>> Saving user:")
-        val anma = User("anma","anma","Andrii","some@mail.com","ROLE_USER,ROLE_ADMIN,READ,WRITE,ADMIN","",1)
+        val anma = User("anma","anma","Andrii",
+            "some@mail.com","ROLE_USER,ROLE_ADMIN,READ,WRITE,ADMIN","", mutableListOf(),1)
         userRepository.save(anma)
         logger.info(">>>>>> Saved user ${anma}")
 
         logger.info(">>>>>> Saving user:")
-        val vasyl = User("vasyl", "vasyl", "Vasyl Vasylenko", "vasyl@mail.com","READ, ROLE_USER","",2)
+        val vasyl = User("vasyl", "vasyl", "Vasyl Vasylenko",
+            "vasyl@mail.com","READ, ROLE_USER","", mutableListOf(),2)
         userRepository.save(vasyl)
         logger.info(">>>>>> Saved user ${vasyl}")
     }

@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.password.NoOpPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.config.web.servlet.invoke
@@ -18,7 +17,6 @@ class SecurityConfig(val userDetailsService: MyUserDetailsService, val jwtReques
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
         auth!!.userDetailsService(userDetailsService)
-
     }
 
     override fun configure(http: HttpSecurity?) {
