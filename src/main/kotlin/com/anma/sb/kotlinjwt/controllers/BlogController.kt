@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/rest/api/v1/blogs")
-class BlogController(val blogRepository: BlogRepository) {
+class BlogController(private val blogRepository: BlogRepository) {
 
     @GetMapping
     fun getBlogs(): List<Blog> = blogRepository.findAll()
 
     @GetMapping("/{id}")
     fun getBlog(@PathVariable id: Int): Blog = blogRepository.findById(id).get()
-    
+
 }

@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @CrossOrigin(origins = ["http://localhost:4200", "http://localhost:3000"])
 class SignupController(
-    val authenticationManager: AuthenticationManager,
-    val jwtUtils: JwtUtils,
-    val userDetailsService: MyUserDetailsService,
-    val userRepository: UserRepository
+    private val authenticationManager: AuthenticationManager,
+    private val jwtUtils: JwtUtils,
+    private val userDetailsService: MyUserDetailsService,
+    private val userRepository: UserRepository
 ) {
 
     val logger = LoggerFactory.getLogger(SignupController::class.java)
