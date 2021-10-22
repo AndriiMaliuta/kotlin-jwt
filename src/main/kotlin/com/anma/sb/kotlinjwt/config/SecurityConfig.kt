@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.config.web.servlet.invoke
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.security.web.util.matcher.RequestMatcher
 
 @EnableWebSecurity
 class SecurityConfig(val userDetailsService: MyUserDetailsService, val jwtRequestFilter: JwtRequestFilter) : WebSecurityConfigurerAdapter() {
@@ -25,8 +26,11 @@ class SecurityConfig(val userDetailsService: MyUserDetailsService, val jwtReques
             csrf { disable() }
 //            formLogin {  }
 //            httpBasic {}
+
             authorizeRequests {
                 authorize("/resources/**", permitAll)
+//                authorize("/", "@webSecurity.check(authentication,request)")
+                authorize("/", )
                 authorize("/signup", permitAll)
                 authorize("/login", permitAll)
                 authorize("/rest/**", hasRole("ROLE_ADMIN"))
